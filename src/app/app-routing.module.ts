@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
@@ -23,9 +23,9 @@ const routes: Routes = [
     resolve: { dataResolve: HomeResolver },
     data: {
       title: 'Home Page',
-      id: 10
+      id: 10,
     },
-    component: MainContentComponent
+    component: MainContentComponent,
   },
   {
     path: 'workers',
@@ -36,7 +36,7 @@ const routes: Routes = [
         path: '',
         component: WorkersListComponent,
         data: {
-          title: 'Worker List Page'
+          title: 'Worker List Page',
         },
       },
       {
@@ -44,17 +44,17 @@ const routes: Routes = [
         resolve: { worker: WorkerResolver },
         component: WorkerDetailsComponent,
         data: {
-          title: 'Worker Details Page'
+          title: 'Worker Details Page',
         },
-      }
-    ]
+      },
+    ],
   },
   {
     path: 'movies/:id',
     canActivate: [AccessControllGuard],
     component: MoviesComponent,
     data: {
-      title: 'Movie Page'
+      title: 'Movie Page',
     },
   },
   //If you want check queryParams
@@ -65,13 +65,12 @@ const routes: Routes = [
   // },
   {
     path: '**',
-    component: PageNotFoundComponent
+    component: PageNotFoundComponent,
   },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

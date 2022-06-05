@@ -1,48 +1,42 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 import { Worker } from '@shared/models/worker.model';
 import { WorkersService } from 'src/app/services/workers.service';
 
 @Component({
-    selector: 'app-workers-list',
-    templateUrl: './workers-list.component.html',
-    styleUrls: ['./workers-list.component.scss']
+  selector: 'app-workers-list',
+  templateUrl: './workers-list.component.html',
+  styleUrls: ['./workers-list.component.scss'],
 })
 export class WorkersListComponent implements OnInit {
+  workers: Worker[] = [];
+  selectedWorker: Worker | null = null;
 
+  constructor(
+    private workersService: WorkersService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
-    workers: Worker[] = [];
-    selectedWorker: Worker | null = null
+  ngOnInit(): void {
+    this.workers = this.workersService.getWorkers();
+  }
 
+  edit(worker: Worker): void {
+    this.selectedWorker = worker;
 
-    constructor(
-        private workersService: WorkersService,
-        private fb: FormBuilder,
-        private router: Router
-    ) {
-    }
+    this.router.navigate(['/workers/details', worker.id]);
 
-    ngOnInit(): void {
-        this.workers = this.workersService.getWorkers()
+    // this.workerForm.patchValue({
+    //     workerName: worker.firstName,
+    //     workerLastName: worker.lastName,
+    //     workerEmail: worker.email,
+    //     workerPlaceOfOrigin: worker.placeOfOrigin,
+    //     workerYearsWorked: worker.yearsWorked
+    // })
 
-    }
-
-    edit(worker: Worker): void {
-        this.selectedWorker = worker
-
-        this.router.navigate(['/workers/details', worker.id])
-
-        // this.workerForm.patchValue({
-        //     workerName: worker.firstName,
-        //     workerLastName: worker.lastName,
-        //     workerEmail: worker.email,
-        //     workerPlaceOfOrigin: worker.placeOfOrigin,
-        //     workerYearsWorked: worker.yearsWorked
-        // })
-
-        // this.sumbitBtn.nativeElement.innerHTML = 'Edit'
-    }
-
+    // this.sumbitBtn.nativeElement.innerHTML = 'Edit'
+  }
 }

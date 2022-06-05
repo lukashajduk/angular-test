@@ -26,7 +26,6 @@ import { EmailColorDirective } from './shared/directives/email-color.directive';
 //Services
 import { WorkersService } from './services/workers.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,17 +40,16 @@ import { WorkersService } from './services/workers.service';
     NavComponent,
     PageNotFoundComponent,
     WorkerDetailsComponent,
-    WorkersListComponent
-
+    WorkersListComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     CityPrefixModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [WorkersService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
