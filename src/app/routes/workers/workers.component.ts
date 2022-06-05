@@ -13,14 +13,13 @@ import { WorkersService } from 'src/app/services/workers.service';
 @Component({
   selector: 'app-workers',
   templateUrl: './workers.component.html',
-  styleUrls: ['./workers.component.scss']
+  styleUrls: ['./workers.component.scss'],
 })
 export class WorkersComponent implements OnInit {
+  @ViewChild('sumbitBtn') sumbitBtn: ElementRef;
 
-  @ViewChild('sumbitBtn') sumbitBtn: ElementRef
-
-  inputValue: number = 0
-  toggleGreenText: boolean = false
+  inputValue: number = 0;
+  toggleGreenText: boolean = false;
   newDate = new Date();
   // workers: Worker[] = [];
   // selectedWorker: Worker | null = null
@@ -34,15 +33,12 @@ export class WorkersComponent implements OnInit {
   constructor(
     private workersService: WorkersService,
     private fb: FormBuilder
-  ) {
-  }
+  ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   handleClick(flag: boolean): void {
-    console.log(flag)
-    this.toggleGreenText = !this.toggleGreenText
+    console.log(flag);
+    this.toggleGreenText = !this.toggleGreenText;
   }
 }
